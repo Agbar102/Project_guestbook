@@ -1,0 +1,18 @@
+{% extends 'guestbook/base.html' %}
+
+{% block title %}Список сообщений{% endblock %}
+
+{% block content %}
+<h1>Гостевая книга</h1>
+<a href="{% url 'guestbook_add' %}">Добавить сообщение</a>
+<ul>
+    {% for message in messages %}
+        <li>
+            <strong>{{ message.name }}</strong> ({{ message.created_at|date:"d.m.Y H:i" }})<br>
+            {{ message.text|linebreaks }}
+        </li>
+    {% empty %}
+        <li>Сообщений пока нет.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
