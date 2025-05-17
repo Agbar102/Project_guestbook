@@ -4,15 +4,47 @@
 
 {% block content %}
 <h1>Гостевая книга</h1>
-<a href="{% url 'guestbook_add' %}">Добавить сообщение</a>
-<ul>
-    {% for message in messages %}
-        <li>
-            <strong>{{ message.name }}</strong> ({{ message.created_at|date:"d.m.Y H:i" }})<br>
-            {{ message.text|linebreaks }}
-        </li>
+
+    <!-- Форма поиска -->
+    <form method="get" class="mb-3">
+        <input type="text" name="q" placeholder="Поиск по имени или сообщению..." class="form-control" value="{{ request.GET.q }}">
+        <button type="submit" class="btn btn-outline-secondary mt-2">Найти</button>
+    </form>
+
+    <!-- Flash-сообщения -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <!-- Кнопка добавить -->
+    <a href="{% url 'guestbook_add' %}" class="btn btn-primary mb-3">Оставить сообщение</a>
+
+    <!-- Список сообщений -->
+    {% for msg in messages %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h5 class="card-title">{{ msg.name }}</h5>
+
+                {% if msg.avatar %}
+                    <img src="{{ msg.avatar.url }}" alt="avatar" width="100" class="mb-2 rounded">
+                {% endif %}
+
+                <p class="card-text">{{ msg.text }}</p>
+
+                <small class="text-muted">{{ msg.created_at|timesince }} назад</small>
+
+                {% if msg.admin_reply %}
+                    <div class="mt-2 alert alert-info">
+                        <strong>Ответ администратора:</strong> {{ msg.admin_reply }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
     {% empty %}
-        <li>Сообщений пока нет.</li>
+        <p>Пока нет сообщений.</p>
     {% endfor %}
-</ul>
 {% endblock %}
+
+
