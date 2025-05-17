@@ -1,130 +1,413 @@
+
 {% load static %}
 <!DOCTYPE HTML>
-<!--
-	Photon by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
+
 <html>
 	<head>
-		<title>Photon by HTML5 UP</title>
+		<title>Guest book</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-<!--		<link rel="stylesheet" href="assets/css/main.css" />-->
 		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
 
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
 	</head>
 	<body class="is-preload">
 
-		<!-- Header -->
-			<section id="header">
-				<div class="inner">
-					<span class="icon solid major fa-cloud"></span>
-					<h1>Hi, I'm <strong>Photon</strong>, another fine<br />
-					little freebie from <a href="http://html5up.net">HTML5 UP</a>.</h1>
-					<p>Accumsan feugiat mi commodo erat lorem ipsum, sed magna<br />
-					lobortis feugiat sapien sed etiam volutpat accumsan.</p>
-					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">Discover</a></li>
-					</ul>
-				</div>
-			</section>
+
+
+<section id="head" class="fade-in">
+    <div class="inner" style="position: relative;">
+        <!-- Анимированный фон -->
+        <div class="particles"></div>
+
+        <!-- Контент -->
+      <section id="heade" style="
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+">
+    <!-- Декоративные элементы -->
+    <div style="
+        position: absolute;
+        top: -50px;
+        right: -50px;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.1);
+    "></div>
+
+    <div style="
+        position: absolute;
+        bottom: -30px;
+        left: -30px;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.05);
+    "></div>
+
+    <div class="inner" style="
+        max-width: 800px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    ">
+        <span class="icon solid major fa-book-open" style="
+            font-size: 5rem;
+            color: #a1c4fd;
+            display: block;
+            margin: 0 auto 1.5rem;
+            animation: float 4s ease-in-out infinite;
+        "></span>
+
+        <h1 style="
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        ">Добро пожаловать в гостевую книгу</h1>
+
+        <p style="
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2.5rem;
+            line-height: 1.6;
+        ">Оставьте сообщение или прочитайте, что написали другие.</p>
+
+        <div style="margin-top: 3rem;">
+            <a href="#one" class="button scrolly" style="
+                display: inline-block;
+                background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+                color: #1e3c72;
+                padding: 1rem 2.5rem;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                font-weight: 600;
+                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+                transition: all 0.3s ease;
+                border: none;
+                cursor: pointer;
+                position: relative;
+                overflow: hidden;
+            ">
+                <span style="position: relative; z-index: 2;">Добавить сообщение</span>
+                <span style="
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: linear-gradient(to right, #c2e9fb, #a1c4fd);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                    z-index: 1;
+                "></span>
+            </a>
+        </div>
+    </div>
+
+    <style>
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        #head .button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        #head .button:hover span:last-child {
+            opacity: 1;
+        }
+
+        #head .button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</section>
+
+
 
 		<!-- One -->
-			<section id="one" class="main style1">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
-							</header>
-							<p>Adipiscing a commodo ante nunc accumsan et interdum mi ante adipiscing. A nunc lobortis non nisl amet vis sed volutpat aclacus nascetur ac non. Lorem curae et ante amet sapien sed tempus adipiscing id accumsan.</p>
-						</div>
-						<div class="col-6 col-12-medium imp-medium">
-							<span class="image fit"><img src="images/pic01.jpg" alt="" /></span>
-						</div>
-					</div>
-				</div>
-			</section>
 
-		<!-- Two -->
-			<section id="two" class="main style2">
-				<div class="container">
-					<div class="row gtr-150">
-						<div class="col-6 col-12-medium">
-							<ul class="major-icons">
-								<li><span class="icon solid style1 major fa-code"></span></li>
-								<li><span class="icon solid style2 major fa-bolt"></span></li>
-								<li><span class="icon solid style3 major fa-camera-retro"></span></li>
-								<li><span class="icon solid style4 major fa-cog"></span></li>
-								<li><span class="icon solid style5 major fa-desktop"></span></li>
-								<li><span class="icon solid style6 major fa-calendar"></span></li>
-							</ul>
-						</div>
-						<div class="col-6 col-12-medium">
-							<header class="major">
-								<h2>Lorem ipsum dolor adipiscing<br />
-								amet dolor consequat</h2>
-							</header>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-							<p>Blandit faucibus proin. Ac aliquam integer adipiscing enim non praesent vis commodo nunc phasellus cubilia ac risus accumsan. Accumsan blandit. Lobortis phasellus non lobortis dit varius mi varius accumsan lobortis. Blandit ante aliquam lacinia lorem lobortis semper morbi col faucibus vitae integer placerat accumsan orci eu mi odio tempus adipiscing adipiscing adipiscing curae consequat feugiat etiam dolore.</p>
-							<p>Adipiscing a commodo ante nunc accumsan interdum mi ante adipiscing. A nunc lobortis non nisl amet vis volutpat aclacus nascetur ac non. Lorem curae eu ante amet sapien in tempus ac. Adipiscing id accumsan adipiscing ipsum.</p>
-						</div>
-					</div>
-				</div>
-			</section>
+        <section id="one" class="main style1" style="background: #f8f9fa; padding: 4rem 0;">
+    <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+        <div class="row gtr-150" style="display: flex; flex-wrap: wrap; margin: 0 -15px;">
+            <div class="col-6 col-12-medium" style="flex: 0 0 50%; max-width: 50%; padding: 0 15px;">
+                <header class="major" style="margin-bottom: 2rem;">
+                    <h2 style="font-size: 2.2rem; color: #2c3e50; margin-bottom: 1rem; position: relative; display: inline-block;">
+                        Добавьте сообщение
+                        <span style="content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, #3498db, #9b59b6);"></span>
+                    </h2>
+                    <p style="color: #7f8c8d; font-size: 1.1rem;">Поделитесь своими мыслями с другими посетителями</p>
+                </header>
 
-		<!-- Three -->
-			<section id="three" class="main style1 special">
-				<div class="container">
-					<header class="major">
-						<h2>Adipiscing amet consequat</h2>
-					</header>
-					<p>Ante nunc accumsan et aclacus nascetur ac ante amet sapien sed.</p>
-					<div class="row gtr-150">
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic02.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions special">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic03.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions special">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</div>
-						<div class="col-4 col-12-medium">
-							<span class="image fit"><img src="images/pic04.jpg" alt="" /></span>
-							<h3>Magna feugiat lorem</h3>
-							<p>Adipiscing a commodo ante nunc magna lorem et interdum mi ante nunc lobortis non amet vis sed volutpat et nascetur.</p>
-							<ul class="actions special">
-								<li><a href="#" class="button">More</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</section>
+                <form method="post" action="{% url 'guestbook_add' %}" enctype="multipart/form-data" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
+                    {% csrf_token %}
+                    <div class="fields" style="margin-bottom: 1.5rem;">
+                        <div class="field" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">{{ form.name.label }}</label>
+                            {{ form.name }}
+                        </div>
+                        <div class="field" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">{{ form.email.label }}</label>
+                            {{ form.email }}
+                        </div>
+                        <div class="field" style="margin-bottom: 1.5rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">{{ form.text.label }}</label>
+                            {{ form.text }}
+                        </div>
+                        <div class="field" style="margin-bottom: 2rem;">
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">Ваше фото (необязательно)</label>
+                            <div class="file-upload" style="position: relative; overflow: hidden; display: inline-block;">
+                                <label style="
+                                    border: 2px dashed #bdc3c7;
+                                    padding: 1rem 2rem;
+                                    border-radius: 8px;
+                                    display: block;
+                                    text-align: center;
+                                    cursor: pointer;
+                                    transition: all 0.3s;
+                                ">
+                                    <span style="display: block; margin-bottom: 0.5rem; color: #3498db;">
+                                        <i class="fas fa-camera" style="font-size: 1.5rem;"></i>
+                                    </span>
+                                    <span style="color: #7f8c8d;">Нажмите для загрузки фото</span>
+                                    <input type="file" name="avatar" id="id_avatar" accept="image/*" style="position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="actions" style="text-align: center;">
+                        <button type="submit" class="button primary" style="
+                            background: linear-gradient(135deg, #3498db, #9b59b6);
+                            color: white;
+                            border: none;
+                            padding: 1rem 2.5rem;
+                            font-size: 1rem;
+                            border-radius: 50px;
+                            cursor: pointer;
+                            transition: all 0.3s;
+                            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+                            position: relative;
+                            overflow: hidden;
+                        ">
+                            <span style="position: relative; z-index: 2;">Отправить сообщение</span>
+                            <span style="
+                                position: absolute;
+                                top: 0;
+                                left: 0;
+                                width: 100%;
+                                height: 100%;
+                                background: linear-gradient(135deg, #9b59b6, #3498db);
+                                opacity: 0;
+                                transition: opacity 0.3s;
+                                z-index: 1;
+                            "></span>
+                        </button>
+                    </div>
+                </form>
 
-		<!-- Four -->
-			<section id="four" class="main style2 special">
-				<div class="container">
-					<header class="major">
-						<h2>Ipsum feugiat consequat?</h2>
-					</header>
-					<p>Sed lacus nascetur ac ante amet sapien.</p>
-					<ul class="actions special">
-						<li><a href="#" class="button wide primary">Sign Up</a></li>
-						<li><a href="#" class="button wide">Learn More</a></li>
-					</ul>
-				</div>
-			</section>
+                {% if messages %}
+                    <ul class="messages" style="margin-top: 2rem; list-style: none; padding: 0;">
+                        {% for message in messages %}
+                            <li style="
+                                padding: 1rem;
+                                margin-bottom: 1rem;
+                                border-radius: 5px;
+                                background: {% if message.tags == 'error' %}#ffebee{% else %}#e8f5e9{% endif %};
+                                color: {% if message.tags == 'error' %}#c62828{% else %}#2e7d32{% endif %};
+                                animation: fadeIn 0.5s;
+                            ">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </div>
+
+            <div class="col-6 col-12-medium imp-medium" style="flex: 0 0 50%; max-width: 50%; padding: 0 15px; display: flex; align-items: center;">
+                <div style="
+                    background: white;
+                    padding: 2rem;
+                    border-radius: 10px;
+                    box-shadow: 0 5px 25px rgba(0,0,0,0.05);
+                    width: 100%;
+                    text-align: center;
+                ">
+                    <div style="
+                        width: 250px;
+                        height: 250px;
+                        margin: 0 auto;
+                        border-radius: 50%;
+                        overflow: hidden;
+                        border: 5px solid #f1f1f1;
+                        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+                        position: relative;
+                    ">
+                        <img src="{% static 'images/default-avatar.jpg' %}" alt="Предпросмотр аватара" id="avatar-preview" style="
+                            width: 100%;
+                            height: 100%;
+                            object-fit: cover;
+                            transition: transform 0.3s;
+                        ">
+                    </div>
+                    <h3 style="margin-top: 1.5rem; color: #2c3e50;">Ваш аватар</h3>
+                    <p style="color: #7f8c8d; margin-top: 0.5rem;">Загрузите фото для предпросмотра</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            box-sizing: border-box;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        textarea:focus {
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .file-upload label:hover {
+            border-color: #3498db;
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(52, 152, 219, 0.4);
+        }
+
+        button:hover span:last-child {
+            opacity: 1;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+
+        #avatar-preview:hover {
+            transform: scale(1.05);
+        }
+    </style>
+
+    <script>
+        document.getElementById('id_avatar').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatar-preview').src = e.target.result;
+                    document.getElementById('avatar-preview').style.transform = 'scale(1.05)';
+                    setTimeout(() => {
+                        document.getElementById('avatar-preview').style.transform = 'scale(1)';
+                    }, 300);
+                }
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</section>
+
+<section id="two" class="main style2">
+    <div class="container">
+        <div class="row gtr-150">
+            <div class="col-6 col-12-medium">
+                <ul class="major-icons">
+                    <li><span class="icon solid style1 major fa-comments"></span></li>
+                    <li><span class="icon solid style2 major fa-users"></span></li>
+                    <li><span class="icon solid style3 major fa-camera-retro"></span></li>
+                    <li><span class="icon solid style4 major fa-shield-alt"></span></li>
+                </ul>
+            </div>
+            <div class="col-6 col-12-medium">
+                <header class="major">
+                    <h2>О нашей Гостевой книге</h2>
+                </header>
+                <p>Оставьте свои воспоминания, пожелания или отзывы в нашей цифровой книге. Каждое сообщение проходит модерацию для поддержания доброжелательной атмосферы.</p>
+                <p>Основные возможности:</p>
+                <ul>
+                    <li>Анонимные или именные сообщения</li>
+                    <li>Возможность прикрепить фото</li>
+                    <li>Ответы администратора</li>
+                    <li>Фильтрация нежелательного контента</li>
+                </ul>
+                <a href="#one" class="button scrolly">Оставить запись</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Three - Последние записи -->
+<!--<section id="three" class="main style1 special">-->
+<!--    <div class="container">-->
+<!--        <header class="major">-->
+<!--            <h2>Последние сообщения</h2>-->
+<!--        </header>-->
+<!--        <p>Свежие записи в нашей гостевой книге</p>-->
+<!--        <div class="row gtr-150">-->
+<!--            {% for post in latest_posts %}-->
+<!--            <div class="col-4 col-12-medium">-->
+<!--                <div class="guest-post">-->
+<!--                    {% if post.avatar %}-->
+<!--                    <span class="image fit"><img src="{{ post.avatar.url }}" alt="Аватар {{ post.name }}" /></span>-->
+<!--                    {% else %}-->
+<!--                    <span class="image fit"><img src="{% static 'images/default-avatar.jpg' %}" alt="Аватар по умолчанию" /></span>-->
+<!--                    {% endif %}-->
+<!--                    <h3>{{ post.name }}</h3>-->
+<!--                    <p>{{ post.text|truncatechars:100 }}</p>-->
+<!--                    <small>{{ post.created_at|date:"d.m.Y H:i" }}</small>-->
+<!--                    {% if post.admin_reply %}-->
+<!--                    <div class="admin-reply">-->
+<!--                        <strong>Ответ администратора:</strong>-->
+<!--                        <p>{{ post.admin_reply }}</p>-->
+<!--                    </div>-->
+<!--                    {% endif %}-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</section>-->
+
+
+
+
+
+
 
 		<!-- Five -->
 		<!--

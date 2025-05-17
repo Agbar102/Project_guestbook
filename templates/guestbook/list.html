@@ -1,50 +1,40 @@
 {% extends 'guestbook/base.html' %}
+{% load static %}
 
-{% block title %}Список сообщений{% endblock %}
+{% block title %}Гостевая книга{% endblock %}
 
 {% block content %}
-<h1>Гостевая книга</h1>
+<section class="main style1">
+    <div class="container">
+        <header class="major">
+            <h2>Гостевая книга</h2>
+            <p>Оставьте сообщение или прочитайте, что написали другие</p>
+        </header>
 
-    <!-- Форма поиска -->
-    <form method="get" class="mb-3">
-        <input type="text" name="q" placeholder="Поиск по имени или сообщению..." class="form-control" value="{{ request.GET.q }}">
-        <button type="submit" class="btn btn-outline-secondary mt-2">Найти</button>
-    </form>
+        <!-- Кнопка -->
+        <ul class="actions special">
+            <li><a href="{% url 'index' %}" class="button primary">Добавить сообщение</a></li>
+        </ul>
 
-    <!-- Flash-сообщения -->
-    {% if messages %}
-        {% for message in messages %}
-            <div class="alert alert-success">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-
-    <!-- Кнопка добавить -->
-    <a href="{% url 'guestbook_add' %}" class="btn btn-primary mb-3">Оставить сообщение</a>
-
-    <!-- Список сообщений -->
-    {% for msg in messages %}
-        <div class="card mb-3">
-            <div class="card-body">
-                <h5 class="card-title">{{ msg.name }}</h5>
-
-                {% if msg.avatar %}
-                    <img src="{{ msg.avatar.url }}" alt="avatar" width="100" class="mb-2 rounded">
-                {% endif %}
-
-                <p class="card-text">{{ msg.text }}</p>
-
-                <small class="text-muted">{{ msg.created_at|timesince }} назад</small>
-
-                {% if msg.admin_reply %}
-                    <div class="mt-2 alert alert-info">
-                        <strong>Ответ администратора:</strong> {{ msg.admin_reply }}
-                    </div>
-                {% endif %}
-            </div>
+        <!-- Сообщения -->
+        <div class="box">
+            {% if messages %}
+                {% for message in messages %}
+                    <article class="message">
+                        <header>
+                            <h3>{{ message.name }}</h3>
+                            <p><small>{{ message.created_at|date:"d.m.Y H:i" }}</small></p>
+                        </header>
+                        <p>{{ message.text|linebreaks }}</p>
+                        <hr>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>Сообщений пока нет.</p>
+            {% endif %}
         </div>
-    {% empty %}
-        <p>Пока нет сообщений.</p>
-    {% endfor %}
+    </div>
+</section>
 {% endblock %}
 
 

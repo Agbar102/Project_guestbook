@@ -24,6 +24,17 @@ def guestbook_add(request):
     return render(request, 'guestbook/add.html', {'form': form})
 
 
+def index(request):
+    form = MessageForm()
+    return render(request, 'pages/index.html', {'form': form})
+
+
+def home_view(request):
+    latest_posts = Message.objects.filter(is_visible=True).order_by('-created_at')[:3]
+    return render(request, 'index.html', {'latest_posts': latest_posts})
+
+
+
 def guestbook_list(request):
     query = request.GET.get('q')
     if query:
