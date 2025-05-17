@@ -1,18 +1,39 @@
 {% extends 'guestbook/base.html' %}
+{% load static %}
 
-{% block title %}Список сообщений{% endblock %}
+{% block title %}Гостевая книга{% endblock %}
 
 {% block content %}
-<h1>Гостевая книга</h1>
-<a href="{% url 'guestbook_add' %}">Добавить сообщение</a>
-<ul>
-    {% for message in messages %}
-        <li>
-            <strong>{{ message.name }}</strong> ({{ message.created_at|date:"d.m.Y H:i" }})<br>
-            {{ message.text|linebreaks }}
-        </li>
-    {% empty %}
-        <li>Сообщений пока нет.</li>
-    {% endfor %}
-</ul>
+<section class="main style1">
+    <div class="container">
+        <header class="major">
+            <h2>Гостевая книга</h2>
+            <p>Оставьте сообщение или прочитайте, что написали другие</p>
+        </header>
+
+        <!-- Кнопка -->
+        <ul class="actions special">
+            <li><a href="{% url 'index' %}" class="button primary">Добавить сообщение</a></li>
+        </ul>
+
+        <!-- Сообщения -->
+        <div class="box">
+            {% if messages %}
+                {% for message in messages %}
+                    <article class="message">
+                        <header>
+                            <h3>{{ message.name }}</h3>
+                            <p><small>{{ message.created_at|date:"d.m.Y H:i" }}</small></p>
+                        </header>
+                        <p>{{ message.text|linebreaks }}</p>
+                        <hr>
+                    </article>
+                {% endfor %}
+            {% else %}
+                <p>Сообщений пока нет.</p>
+            {% endif %}
+        </div>
+    </div>
+</section>
 {% endblock %}
+

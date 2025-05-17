@@ -22,3 +22,7 @@ def guestbook_add(request):
     else:
         form = MessageForm()
     return render(request, 'guestbook/add.html', {'form': form})
+
+def index(request):
+    form = MessageForm()
+    return render(request, 'pages/index.html', {'form': form})
