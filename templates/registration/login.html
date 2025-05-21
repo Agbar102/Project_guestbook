@@ -1,0 +1,69 @@
+{% extends 'guestbook/base.html' %}
+{% load static %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'assets/css/login.css' %}" />
+  <div class="login_form">
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <h3>Log in with</h3>
+
+      <div class="login_option">
+        <div class="option">
+          <a href="#">
+            <img src="{% static 'images/google.png' %}" alt="Google" />
+            <span>Google</span>
+          </a>
+        </div>
+
+        <div class="option">
+          <a href="#">
+            <img src="{% static 'images/apple.png' %}" alt="Apple" />
+            <span>Apple</span>
+          </a>
+        </div>
+      </div>
+
+      <p class="separator">
+        <span>or</span>
+      </p>
+
+      <!-- Показываем ошибки формы -->
+      {% if form.non_field_errors %}
+        <div class="error">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      <div class="input_box">
+        <label for="{{ form.username.id_for_label }}">Email</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <div class="error">{{ form.username.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="input_box">
+        <div class="password_title">
+          <label for="{{ form.password.id_for_label }}">Password</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        {{ form.password }}
+        {% if form.password.errors %}
+          <div class="error">{{ form.password.errors }}</div>
+        {% endif %}
+      </div>
+
+      <button type="submit">Войти</button>
+
+      <p class="sign_up">
+        У вас нет аккаунта?
+        <a href="{% url 'register' %}">Зарегестрироваться</a>
+      </p>
+    </form>
+  </div>
+{% endblock %}

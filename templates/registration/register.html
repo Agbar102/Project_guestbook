@@ -1,0 +1,59 @@
+{% extends 'guestbook/base.html' %}
+{% load static %}
+
+  {% block content %}
+  <link rel="stylesheet" href="{% static 'assets/css/regis.css' %}">
+
+  <div class="wrapper">
+    <h2>Registration</h2>
+
+    <form method="POST" action="{% url 'register' %}">
+      {% csrf_token %}
+
+      {% if form.non_field_errors %}
+        <div class="error">
+          {% for error in form.non_field_errors %}
+            <p>{{ error }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+
+      <div class="input-box">
+        <input type="email" name="email" placeholder="Введите email" required
+               value="{{ form.email.value|default_if_none:'' }}">
+        {% if form.email.errors %}
+          <div class="error">{{ form.email.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="input-box">
+        <input type="password" name="password1" placeholder="Создайте пароль" required>
+        {% if form.password1.errors %}
+          <div class="error">{{ form.password1.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="input-box">
+        <input type="password" name="password2" placeholder="Подтвердите пароль" required>
+        {% if form.password2.errors %}
+          <div class="error">{{ form.password2.errors }}</div>
+        {% endif %}
+      </div>
+
+      <div class="policy">
+        <input type="checkbox" required>
+        <h3>Я принимаю все условия использования</h3>
+      </div>
+
+      <div class="input-box button">
+        <input type="submit" value="Зарегистрироваться">
+      </div>
+
+      <div class="text">
+        <h3>Уже есть аккаунт? <a href="{% url 'login' %}">Войти</a></h3>
+      </div>
+    </form>
+  </div>
+
+  {% endblock %}
