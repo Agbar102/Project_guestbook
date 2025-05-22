@@ -22,6 +22,7 @@
         gap: 10px;
         z-index: 100;
     ">
+               {% if not user.is_authenticated %}
         <a href="{% url 'login' %}" style="
             padding: 8px 16px;
             border-radius: 4px;
@@ -40,7 +41,9 @@
             text-decoration: none;
             font-size: 14px;
         ">Зарегистрироваться</a>
+               {% endif %}
 
+                {% if user.is_authenticated %}
            <a href="{% url 'guestbook_list' %}" style="
             padding: 8px 16px;
             border-radius: 4px;
@@ -49,6 +52,17 @@
             text-decoration: none;
             font-size: 14px;
         ">Все сообщения</a>
+
+
+        <a href="{% url 'logout' %}" style="
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            ">Выйти</a>
+        {% endif %}
     </div>
 				<div class="inner">
 					<span class="icon solid major fa-cloud"></span>
@@ -59,7 +73,6 @@
 					</ul>
 				</div>
 			</section>
-
 
         <section id="one" class="main style1" style="background: #f8f9fa; padding: 4rem 0;">
     <div class="container" style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
@@ -72,7 +85,14 @@
                     </h2>
                     <p style="color: #7f8c8d; font-size: 1.1rem;">Поделитесь своими мыслями с другими посетителями</p>
                 </header>
+{% if not user.is_authenticated %}
+  <p style="color: red;">
+    Пожалуйста, <a href="{% url 'login' %}">войдите</a> или
+    <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы оставить сообщение.
+  </p>
+{% endif %}
 
+                {% if user.is_authenticated %}
                 <form method="post" action="{% url 'guestbook_add' %}" enctype="multipart/form-data" style="background: white; padding: 2rem; border-radius: 10px; box-shadow: 0 5px 25px rgba(0,0,0,0.05);">
                     {% csrf_token %}
                     <div class="fields" style="margin-bottom: 1.5rem;">
@@ -138,7 +158,7 @@
                         </button>
                     </div>
                 </form>
-
+                {% endif %}
                 {% if messages %}
                     <ul class="messages" style="margin-top: 2rem; list-style: none; padding: 0;">
                         {% for message in messages %}
@@ -174,7 +194,7 @@
                         box-shadow: 0 5px 15px rgba(0,0,0,0.1);
                         position: relative;
                     ">
-                        <img src="{% static 'images/default-avatar.jpg' %}" alt="" id="avatar-preview" style="
+                        <img src="{% static 'images/i.webp' %}" alt="" id="avatar-preview" style="
                             width: 100%;
                             height: 100%;
                             object-fit: cover;
@@ -307,7 +327,7 @@
 		<!-- Scripts -->
 			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
 			<script src="{% static 'assets/js/jquery.scrolly.min.js'%}"></script>
-			<script src="{% static 'assets/js/browser.min.js' }"></script>
+			<script src="{% static 'assets/js/browser.min.js' %}"></script>
 			<script src="{% static 'assets/js/breakpoints.min.js' %}"></script>
 			<script src="{% static 'assets/js/util.js' %}"></script>
 			<script src="{% static 'assets/js/main.js' %}"></script>

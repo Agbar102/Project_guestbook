@@ -1,8 +1,6 @@
 import re
 from django.contrib.auth import get_user_model
-from idna import valid_label_length
 from rest_framework import serializers
-from users.models import CustomUser
 
 User = get_user_model()
 

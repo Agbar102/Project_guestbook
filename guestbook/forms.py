@@ -1,7 +1,7 @@
 from django import forms
 from .models import Message
 
-#Создание формы для отправки сообщений без регистрации
+#Создание формы для отправки сообщений
 class MessageForm(forms.ModelForm):
     class Meta:
         model = Message
