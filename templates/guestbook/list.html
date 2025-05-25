@@ -11,6 +11,12 @@
             <p>Оставьте сообщение или прочитайте, что написали другие</p>
         </header>
 
+        <form method="get">
+        <input type="text" name="q" placeholder="Поиск по имени или тексту..." value="{{ query|default:'' }}">
+        <button type="submit">Поиск</button>
+    </form>
+
+
         <!-- Кнопка -->
         <ul class="actions special">
             <li><a href="{% url 'index' %}" class="button primary">Добавить сообщение</a></li>
@@ -31,8 +37,17 @@
                 {% endfor %}
             {% else %}
                 <p>Сообщений пока нет.</p>
+
+         {% if message.admin_reply %}
+            <div style="background: #f0f0f0; padding: 10px; margin-top: 15px; border-left: 3px solid green;">
+                <strong>Ответ администратора:</strong>
+                    <p>{{ message.admin_reply|linebreaks }}</p>
+            </div>
+        {% endif %}
             {% endif %}
+
         </div>
+
     </div>
 </section>
 {% endblock %}

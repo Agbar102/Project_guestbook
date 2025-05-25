@@ -32,8 +32,6 @@ def register_view(request):
             form.save()
             messages.success(request, "Регистрация прошла успешно!")
             return redirect('index')
-        else:
-            print(form.errors)
     else:
         form = RegisterForm()
     return render(request, 'registration/register.html', {'form': form})

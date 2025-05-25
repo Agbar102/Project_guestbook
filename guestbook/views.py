@@ -1,23 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
-from rest_framework import generics
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.generics import get_object_or_404
 
 from .models import Message
 from .forms import MessageForm
 
 
-#Отображаются только одобренные (is_visible=True) записи
-#Страница со списком сообщений
 def guestbook_list(request):
     messages_list = Message.objects.filter(is_visible=True)
     return render(request, 'guestbook/list.html', {'messages': messages_list})
 
-# Уведомление о публикации после отправки
+
 def guestbook_add(request):
     if request.method == 'POST':
-        form = MessageForm(request.POST, request.FILES) # чтоб можно было еще аватар добавить
+        form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, "Ваше сообщение отправлено и будет опубликовано после одобрения.")
@@ -34,10 +31,10 @@ def index(request):
 
 def home_view(request):
     latest_posts = Message.objects.filter(is_visible=True).order_by('-created_at')[:3]
-    return render(request, 'index.html', {'latest_posts': latest_posts})
+    return render(request, 'pages/index.html', {'latest_posts': latest_posts})
 
 
-def guestbook_list(request):
+def list_guestbook(request):
     query = request.GET.get('q')
     if query:
         messages_list = Message.objects.filter(

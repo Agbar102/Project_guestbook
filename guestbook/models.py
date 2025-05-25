@@ -7,6 +7,7 @@ class Message(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     is_visible = models.BooleanField(default=False)
     avatar = models.ImageField(verbose_name="Картинка аватара", upload_to="avatars/img_box", blank=True, null=True)
+    admin_reply = models.TextField(blank=True, null=True)
 
 
     def __str__(self):
