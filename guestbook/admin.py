@@ -8,4 +8,3 @@ class GuestMessageAdmin(admin.ModelAdmin):
     search_fields = ('name', 'email', 'text',)
     list_filter = ('is_visible', 'created_at',)
     readonly_fields = ('created_at',)
-    # fields = ('name', 'text', 'is_visible', 'admin_reply',)

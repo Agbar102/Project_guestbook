@@ -14,6 +14,5 @@ class Message(models.Model):
         return f"{self.name} ({self.email})"
 
     class Meta:
-        ordering = ['-created_at']
         verbose_name = 'Сообщение'
         verbose_name_plural = 'Сообщения'

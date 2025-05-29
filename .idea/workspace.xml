@@ -8,11 +8,12 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/admin.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestbook/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guestbook/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/registration/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/registration/register.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

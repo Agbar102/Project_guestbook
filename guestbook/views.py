@@ -1,18 +1,20 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.db.models import Q
-from rest_framework.generics import get_object_or_404
 
 from .models import Message
 from .forms import MessageForm
 
 
 def guestbook_list(request):
+    query = request.GET.get('q')
     messages_list = Message.objects.filter(is_visible=True)
+    if query:
+        messages_list = messages_list.filter(Q(name__icontains=query) | Q(text__icontains=query))
     return render(request, 'guestbook/list.html', {'messages': messages_list})
 
 
-def guestbook_add(request):
+def main_view(request):
     if request.method == 'POST':
         form = MessageForm(request.POST, request.FILES)
         if form.is_valid():
@@ -21,27 +23,14 @@ def guestbook_add(request):
         return redirect('guestbook_list')
     else:
         form = MessageForm()
-    return render(request, 'guestbook/add.html', {'form': form})
 
-
-def index(request):
-    form = MessageForm()
-    return render(request, 'pages/index.html', {'form': form})
-
-
-def home_view(request):
     latest_posts = Message.objects.filter(is_visible=True).order_by('-created_at')[:3]
-    return render(request, 'pages/index.html', {'latest_posts': latest_posts})
+    context = {
+        'form': form,
+        'latest_posts': latest_posts
+    }
+    return render(request, 'pages/index.html', context)
 
 
-def list_guestbook(request):
-    query = request.GET.get('q')
-    if query:
-        messages_list = Message.objects.filter(
-            Q(is_visible=True) & (Q(name__icontains=query) | Q(text__icontains=query))
-        )
-    else:
-        messages_list = Message.objects.filter(is_visible=True)
-    return render(request, 'guestbook/list.html', {'messages': messages_list})
 
 

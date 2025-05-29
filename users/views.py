@@ -1,40 +1,28 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, logout
-from django.template.context_processors import request
-from users.serializers import RegisterUserSerializer
-from rest_framework.views import APIView
-from rest_framework.response import Response
 from django.shortcuts import render, redirect
-from .forms import RegisterForm
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
+
+from users.serializers import RegisterUserSerializer
+
+
 
 
 User = get_user_model()
 
 
-class RegisterUserAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        serializer = RegisterUserSerializer(data=request.data)
-        if serializer.is_valid(raise_exception=True):
-            email = serializer.validated_data.get("email")
-            password = serializer.validated_data.get("password")
-            user = User(email=email)
-            user.set_password(password)
-            user.save()
-        return Response({"message": "ПОЛЬЗОВАТЕЛЬ СОЗДАН"})
-
-
 def register_view(request):
     if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
+        data = request.POST.dict()
+        serializer = RegisterUserSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
             messages.success(request, "Регистрация прошла успешно!")
-            return redirect('index')
+            return redirect('login')
     else:
-        form = RegisterForm()
-    return render(request, 'registration/register.html', {'form': form})
+        errors = None
+    return render(request, 'registration/register.html', {'errors': errors})
 
 
 class CustomLoginView(LoginView):
