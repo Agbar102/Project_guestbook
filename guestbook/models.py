@@ -1,6 +1,10 @@
 from django.db import models
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Message(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='messages', default=1)
     name = models.CharField("Имя", max_length=20)
     email = models.EmailField("Email address")
     text = models.TextField("Сообщение")

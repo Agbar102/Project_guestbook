@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dffcffd4-42e1-459e-8861-8311a851b470" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/locale/.po" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/guestbook/delete_message.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/guestbook/edit.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/guestbook/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/config/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/guestbook/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/guestbook/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/guestbook/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/guestbook/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guestbook/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/guestbook/list.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/guestbook/list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,9 +62,11 @@
       <recent name="$PROJECT_DIR$/templates/registration" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/locale" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/users" />
       <recent name="$PROJECT_DIR$/media" />
       <recent name="$PROJECT_DIR$/static/images" />
-      <recent name="$PROJECT_DIR$/static/assets/css" />
     </key>
   </component>
   <component name="SharedIndexes">

@@ -9,6 +9,9 @@ class RegisterUserSerializer(serializers.Serializer):
     password1 = serializers.CharField(min_length=8, write_only=True)
     password2 = serializers.CharField(min_length=8, write_only=True)
 
+    def create(self, validated_data):
+        return User.objects.create_user(**validated_data)
+
     def validate(self, attrs):
         email = attrs.get("email")
         user = User.objects.filter(email=email)

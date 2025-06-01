@@ -1,14 +1,15 @@
 {% extends 'guestbook/base.html' %}
 {% load static %}
-
+{% load i18n %}
 {% block title %}Гостевая книга{% endblock %}
 
 {% block content %}
 <section class="main style1">
     <div class="container">
         <header class="major">
-            <h2>Ваше сообщение отправлено и будет опубликовано после одобрения.</h2>
-            <p>Оставьте сообщение или прочитайте, что написали другие</p>
+
+<h2>{% trans "Ваше сообщение отправлено и будет опубликовано после одобрения." %}</h2>
+<p>{% trans "Оставьте сообщение или прочитайте, что написали другие" %}</p>
         </header>
 
         <form method="get">
@@ -32,6 +33,11 @@
                             <p><small>{{ message.created_at|date:"d.m.Y H:i" }}</small></p>
                         </header>
                         <p>{{ message.text|linebreaks }}</p>
+
+                {% if user.is_authenticated and user == message.user%}
+            <a href="{% url 'guestbook_edit' message.pk %}">Редактировать</a> |
+            <a href="{% url 'guestbook_delete' message.pk %}">Удалить</a>
+                        {% endif %}
                         <hr>
                     </article>
                 {% endfor %}

@@ -1,0 +1,64 @@
+{% extends 'guestbook/base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h2 class="h4 mb-0"><i class="fas fa-edit me-2"></i>Редактировать сообщение</h2>
+                </div>
+
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+                        {% csrf_token %}
+                       {{ form.as_p }}
+
+                        <div class="d-flex justify-content-between mt-4">
+                            <button type="submit" class="btn btn-success px-4">
+                                <i class="fas fa-save me-2"></i>Сохранить изменения
+                            </button>
+                            <a href="{% url 'guestbook_list' %}" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-2"></i>Отменить
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+                {% if form.non_field_errors %}
+                <div class="card-footer bg-danger text-white">
+                    {% for error in form.non_field_errors %}
+                        <p class="mb-0"><i class="fas fa-exclamation-circle me-2"></i>{{ error }}</p>
+                    {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    textarea.form-control {
+        min-height: 150px;
+        resize: vertical;
+    }
+
+    .card {
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    .card-header {
+        border-radius: 0 !important;
+    }
+
+    .btn-success {
+        transition: all 0.3s;
+    }
+
+    .btn-success:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+</style>
+{% endblock %}

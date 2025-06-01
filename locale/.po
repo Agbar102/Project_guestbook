@@ -1,0 +1,5 @@
+msgid "Оставьте сообщение"
+msgstr "Leave a message"
+
+msgid "Сообщение успешно отправлено."
+msgstr "Message sent successfully."

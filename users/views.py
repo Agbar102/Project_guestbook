@@ -21,8 +21,8 @@ def register_view(request):
             messages.success(request, "Регистрация прошла успешно!")
             return redirect('login')
     else:
-        errors = None
-    return render(request, 'registration/register.html', {'errors': errors})
+        serializer = RegisterUserSerializer()
+    return render(request, 'registration/register.html', {'form': serializer})
 
 
 class CustomLoginView(LoginView):

@@ -1,4 +1,4 @@
-
+{% load i18n %}
 {% load static %}
 <!DOCTYPE HTML>
 
@@ -11,9 +11,11 @@
 
 		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
 	</head>
-	<body class="is-preload">
+
 
 	<section id="header">
+
+	<body class="is-preload">
            <div style="
         position: absolute;
         top: 20px;
@@ -22,6 +24,9 @@
         gap: 10px;
         z-index: 100;
     ">
+
+
+
                {% if not user.is_authenticated %}
         <a href="{% url 'login' %}" style="
             padding: 8px 16px;
@@ -40,7 +45,7 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
-        ">Зарегистрироваться</a>
+        ">{% trans "Зарегистрироваться"% }</a>
                {% endif %}
 
                 {% if user.is_authenticated %}
@@ -51,25 +56,68 @@
             color: white;
             text-decoration: none;
             font-size: 14px;
-        ">Все сообщения</a>
+        ">{% trans "Все сообщения "%}</a>
 
 
-        <a href="{% url 'logout' %}" style="
+    <a href="{% url 'logout' %}" style="
             padding: 8px 16px;
             border-radius: 4px;
             background: rgba(255,255,255,0.2);
             color: white;
             text-decoration: none;
             font-size: 14px;
-            ">Выйти</a>
+            ">{% trans "Выйти" %}</a>
         {% endif %}
+
+    <!-- Переключатель языка -->
+    <form action="{% url 'set_language' %}" method="post" style="display: inline;">
+        {% csrf_token %}
+        <input name="next" type="hidden" value="{{ request.get_full_path }}">
+
+        {% get_current_language as current_lang %}
+
+        {% if current_lang == 'en' %}
+            <input type="hidden" name="language" value="ru">
+            <button type="submit" style="
+                padding: 8px 16px;
+                border-radius: 4px;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+                border: none;
+                cursor: pointer;
+            ">Русский</button>
+        {% else %}
+            <input type="hidden" name="language" value="en">
+            <button type="submit" style="
+                padding: 8px 16px;
+                border-radius: 4px;
+                background: rgba(255,255,255,0.2);
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+                border: none;
+                cursor: pointer;
+            ">English</button>
+        {% endif %}
+    </form>
+</div>
+
+
+
+
     </div>
+
+
+
+
 				<div class="inner">
 					<span class="icon solid major fa-cloud"></span>
-					<h1>Добро пожаловать в гостевую <strong> книгу</strong><br />
-					Оставьте сообщение или прочитайте, <a href={% url 'guestbook_list' %}>что написали другие</a>.</h1>
+					<h1>{% trans "Добро пожаловать в гостевую" %}<strong> {% trans "книгу" %}</strong><br />
+					Оставьте сообщение или прочитайте, <a href={% url 'guestbook_list' %}>{% trans "что написали другие" %}</a>.</h1>
 					<ul class="actions special">
-						<li><a href="#one" class="button scrolly">Добавить сообщение</a></li>
+						<li><a href="#one" class="button scrolly">{% trans "Добавить сообщение" %}</a></li>
 					</ul>
 				</div>
 			</section>
@@ -80,15 +128,15 @@
             <div class="col-6 col-12-medium" style="flex: 0 0 50%; max-width: 50%; padding: 0 15px;">
                 <header class="major" style="margin-bottom: 2rem;">
                     <h2 style="font-size: 2.2rem; color: #2c3e50; margin-bottom: 1rem; position: relative; display: inline-block;">
-                        Добавьте сообщение
+                        {% trans "Добавьте сообщение" %}
                         <span style="content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 3px; background: linear-gradient(90deg, #3498db, #9b59b6);"></span>
                     </h2>
-                    <p style="color: #7f8c8d; font-size: 1.1rem;">Поделитесь своими мыслями с другими посетителями</p>
+                    <p style="color: #7f8c8d; font-size: 1.1rem;">{% trans "Поделитесь своими мыслями с другими посетителями" %}</p>
                 </header>
 {% if not user.is_authenticated %}
   <p style="color: red;">
-    Пожалуйста, <a href="{% url 'login' %}">войдите</a> или
-    <a href="{% url 'register' %}">зарегистрируйтесь</a>, чтобы оставить сообщение.
+      {% trans "Пожалуйста" %}, <a href="{% url 'login' %}">{% trans "войдите" %}</a> {% trans "или" %}
+    <a href="{% url 'register' %}">{% trans "зарегистрируйтесь"%}</a>, {% trans "чтобы оставить сообщение."%}
   </p>
 {% endif %}
 
@@ -109,7 +157,7 @@
                             {{ form.text }}
                         </div>
                         <div class="field" style="margin-bottom: 2rem;">
-                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">Ваше фото (необязательно)</label>
+                            <label style="display: block; margin-bottom: 0.5rem; color: #2c3e50; font-weight: 500;">{% trans "Ваше фото"  %}</label>
                             <div class="file-upload" style="position: relative; overflow: hidden; display: inline-block;">
                                 <label style="
                                     border: 2px dashed #bdc3c7;
@@ -123,7 +171,7 @@
                                     <span style="display: block; margin-bottom: 0.5rem; color: #3498db;">
                                         <i class="fas fa-camera" style="font-size: 1.5rem;"></i>
                                     </span>
-                                    <span style="color: #7f8c8d;">Нажмите для загрузки фото</span>
+                                    <span style="color: #7f8c8d;">{% trans "Нажмите для загрузки фото" %}</span>
                                     <input type="file" name="avatar" id="id_avatar" accept="image/*" style="position: absolute; left: 0; top: 0; opacity: 0; width: 100%; height: 100%; cursor: pointer;">
                                 </label>
                             </div>
@@ -143,7 +191,7 @@
                             position: relative;
                             overflow: hidden;
                         ">
-                            <span style="position: relative; z-index: 2;">Отправить сообщение</span>
+                            <span style="position: relative; z-index: 2;">{% trans "Отправить сообщение" %}</span>
                             <span style="
                                 position: absolute;
                                 top: 0;
@@ -201,8 +249,8 @@
                             transition: transform 0.3s;
                         ">
                     </div>
-                    <h3 style="margin-top: 1.5rem; color: #2c3e50;">Ваш аватар</h3>
-                    <p style="color: #7f8c8d; margin-top: 0.5rem;">Загрузите фото для предпросмотра</p>
+                    <h3 style="margin-top: 1.5rem; color: #2c3e50;">{% trans "Ваш аватар" %}</h3>
+                    <p style="color: #7f8c8d; margin-top: 0.5rem;">{% trans "Загрузите фото для предпросмотра" %}</p>
                 </div>
             </div>
         </div>
@@ -329,7 +377,7 @@
             color: #666;
             font-size: 16px;
         }">
-        <h1>Последние сообщения</h1>
+        <h1>{% trans "Последние сообщения" %}</h1>
 
         {% if latest_posts %}
             {% for message in latest_posts %}
@@ -340,7 +388,7 @@
                 </div>
             {% endfor %}
         {% else %}
-            <p class="no-messages">Сообщений пока нет.</p>
+            <p class="no-messages">{% trans "Сообщений пока нет"%}</p>
         {% endif %}
     </div>
 
@@ -359,17 +407,17 @@
             </div>
             <div class="col-6 col-12-medium">
                 <header class="major">
-                    <h2>О нашей Гостевой книге</h2>
+                    <h2>{% trans "О нашей Гостевой книге"%}</h2>
                 </header>
-                <p>Оставьте свои воспоминания, пожелания или отзывы в нашей цифровой книге. Каждое сообщение проходит модерацию для поддержания доброжелательной атмосферы.</p>
-                <p>Основные возможности:</p>
+                <p>{% trans "Оставьте свои воспоминания, пожелания или отзывы в нашей цифровой книге. Каждое сообщение проходит модерацию для поддержания доброжелательной атмосферы.</p>
+                <p>Основные возможности:"%}</p>
                 <ul>
-                    <li>Анонимные или именные сообщения</li>
-                    <li>Возможность прикрепить фото</li>
-                    <li>Ответы администратора</li>
-                    <li>Фильтрация нежелательного контента</li>
+                    <li>{% trans "Анонимные или именные сообщения" %}</li>
+                    <li>{% trans "Возможность прикрепить фото" %}</li>
+                    <li>{% trans "Ответы администратора" %}</li>
+                    <li>{% trans "Фильтрация нежелательного контента" %}</li>
                 </ul>
-                <a href="#one" class="button scrolly">Оставить запись</a>
+                <a href="#one" class="button scrolly">{% trans "Оставить запись" %}</a>
             </div>
         </div>
     </div>
